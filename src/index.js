@@ -11,14 +11,14 @@ import styles from './styles';
 const FRICTION = 8;
 
 const defaultComponentsConfig = {
-  success: ({ hide, text1, text2 }) => (
-    <SuccessToast onClose={hide} text1={text1} text2={text2} />
+  success: ({ hide, text1, text1Style, text2, text2Style }) => (
+    <SuccessToast onClose={hide} text1={text1} text1Style={text1Style} text2={text2} text2Style={text2Style} />
   ),
-  error: ({ hide, text1, text2 }) => (
-    <ErrorToast onClose={hide} text1={text1} text2={text2} />
+  error: ({ hide, text1, text1Style, text2, text2Style }) => (
+    <ErrorToast onClose={hide} text1={text1} text1Style={text1Style} text2={text2} text2Style={text2Style} />
   ),
-  info: ({ hide, text1, text2 }) => (
-    <InfoToast onClose={hide} text1={text1} text2={text2} />
+  info: ({ hide, text1, text1Style, text2, text2Style }) => (
+    <InfoToast onClose={hide} text1={text1} text1Style={text1Style} text2={text2} text2Style={text2Style} />
   )
 };
 
@@ -45,7 +45,9 @@ const getInitialState = (props) => {
 
     // content
     text1: undefined,
+    text1Style: undefined,
     text2: undefined,
+    text2Style: undefined,
 
     onShow,
     onHide
@@ -164,7 +166,7 @@ class Toast extends Component {
       ...getInitialState(this.props), // Reset layout
       /*
           Preserve the previously computed height (via onLayout).
-          If the height of the component corresponding to this `show` call is different, 
+          If the height of the component corresponding to this `show` call is different,
           onLayout will be called again and `height` state will adjust.
 
           This fixes an issue where a succession of calls to components with custom heights (custom Toast types)
@@ -266,6 +268,8 @@ class Toast extends Component {
           'inProgress',
           'isVisible',
           'text1',
+          'text1Style',
+          'text2Style',
           'text2',
           'hide',
           'show'

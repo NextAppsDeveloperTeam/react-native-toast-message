@@ -6,7 +6,7 @@ import { icons } from '../../assets';
 import styles, { HEIGHT } from './styles';
 
 const BaseToast = (props) => {
-  const { color, icon, text1, text2, onClose } = props;
+  const { color, icon, text1, text1Style, text2, text2Style, onClose } = props;
 
   const baseStyle = [
     styles.base,
@@ -28,14 +28,14 @@ const BaseToast = (props) => {
         <View style={styles.body}>
           {text1 !== undefined &&
             <View>
-              <Text style={styles.text1} numberOfLines={1}>
+              <Text style={[styles.text1, text1Style]} numberOfLines={1}>
                 {text1}
               </Text>
             </View>
           }
           {text2 !== undefined &&
             <View>
-              <Text style={styles.text2} numberOfLines={2}>
+              <Text style={[styles.text2, text2Style]} numberOfLines={2}>
                 {text2}
               </Text>
             </View>
